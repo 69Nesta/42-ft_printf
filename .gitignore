@@ -1,0 +1,8 @@
+main.c
+*.a
+*.o
+obj
+test.c
+tests
+.vscode
+.tmp
