@@ -3,7 +3,7 @@ NAME = libftprintf.a
 SRC = ft_printf.c
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 
 OBJ_DIR = obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:%.c=%.o))
@@ -27,8 +27,16 @@ fclean: clean
 
 re: fclean all
 
+check: norm
+
+norm:
+	@clear
+	@echo "\n------------ Norm ------------\n"
+	@norminette $(SRC) $(SRC_BONUS) libft.h
+	@echo
+
 test: $(NAME)
-	$(CC) $(CFLAGS) -L. -lftprintf main.c
+	$(CC) $(CFLAGS) main.c $(NAME)
 
 .PHONY: all clean fclean re
 
