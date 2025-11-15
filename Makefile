@@ -10,19 +10,28 @@ OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:%.c=%.o))
 
 HEADERS = ft_printf.h
 
+LIBFT_DIR = ./libft
+LIBFT = libft.a
+LIBFT_CMD = make --no-print-directory -C $(LIBFT_DIR)
+
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(LIBFT) $(OBJ)
+	cp $(LIBFT_DIR)/$(LIBFT) $(NAME)
 	ar rcs $(NAME) $(OBJ)
 
 $(OBJ_DIR)/%.o: %.c $(HEADERS)
 	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) -c $< -o $@
 
+$(LIBFT):
+	@$(LIBFT_CMD)
+
 clean:
 	rm -rf $(OBJ_DIR)
 
 fclean: clean
+	$(LIBFT_CMD) $@
 	rm -f $(NAME)
 
 re: fclean all
@@ -32,11 +41,12 @@ check: norm
 norm:
 	@clear
 	@echo "\n------------ Norm ------------\n"
-	@norminette $(SRC) $(SRC_BONUS) libft.h
+	@norminette $(SRC) $(HEADERS)
 	@echo
 
-test: $(NAME)
-	$(CC) $(CFLAGS) main.c $(NAME)
+test: $(NAME) main.c
+	$(CC) $(CFLAGS) main.c $(NAME) -o test.out
+	@echo
+	@./test.out
 
 .PHONY: all clean fclean re
-

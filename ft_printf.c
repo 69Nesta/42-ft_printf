@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 17:10:20 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/14 17:12:17 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/11/15 10:41:58 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 int	ft_printf(const char *s, ...)
 {
-	va_list ap;
+	va_list	ap;
 
-    va_start(ap, s);
-	// logic there
-    va_end(ap);
+	va_start(ap, s);
+	va_end(ap);
 	return (0);
 }
