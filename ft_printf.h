@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 17:09:06 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/15 10:35:29 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/11/15 14:58:55 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include <stdarg.h>
 # include <unistd.h>
+# include "libft/libft.h"
 
-int	ft_printf(const char *s, ...);
+int	ft_printf(const char *format, ...);
 
 #endif
