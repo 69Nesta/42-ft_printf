@@ -1,9 +1,12 @@
 NAME = libftprintf.a
 
-SRC = ft_printf.c
+SRC = ft_printf.c \
+		src/ft_type_c.c \
+		src/ft_type_s.c \
+		src/ft_type_i.c
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Wextra -Werror -I. -g3
 
 OBJ_DIR = obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:%.c=%.o))
@@ -30,13 +33,15 @@ $(LIBFT):
 clean:
 	rm -rf $(OBJ_DIR)
 
-fclean: clean
+fclean: clean clean_out
 	$(LIBFT_CMD) $@
-	rm -f $(NAME)
 
 re: fclean all
 
 check: norm
+
+clean_out:
+	rm -f $(NAME)
 
 norm:
 	@clear
@@ -44,9 +49,9 @@ norm:
 	@norminette $(SRC) $(HEADERS)
 	@echo
 
-test: $(NAME) main.c
-	$(CC) $(CFLAGS) main.c $(NAME) -o test.out
+test: clean_out $(NAME) main.c
+	$(CC) $(CFLAGS) main.c $(NAME) -o $(OBJ_DIR)/test.out
 	@echo
-	@./test.out
+	@./$(OBJ_DIR)/test.out
 
 .PHONY: all clean fclean re

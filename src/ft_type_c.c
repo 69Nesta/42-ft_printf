@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_type_c.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/14 17:09:06 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/17 09:14:01 by rpetit           ###   ########.fr       */
+/*   Created: 2025/11/17 09:06:29 by rpetit            #+#    #+#             */
+/*   Updated: 2025/11/17 09:08:22 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include <unistd.h>
-# include "libft/libft.h"
+int	ft_type_c(char c)
+{
+	return (write(1, &c, 1));
+}
 
-int	ft_printf(const char *format, ...);
-
-int	ft_type_i(int n);
-int	ft_istype_i(char c);
-
-int	ft_type_c(char c);
-int	ft_istype_c(char type);
-
-int	ft_type_s(const char *string);
-int	ft_istype_s(char type);
-
-#endif
+int	ft_istype_c(char type)
+{
+	return (type == 'c');
+}
