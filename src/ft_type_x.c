@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 10:03:09 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/17 15:10:14 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/11/17 17:23:59 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_type	ft_type_x(unsigned int hex, const char *format)
 {
 	t_type	result;
-	
+
 	result = ft_new_t_result(1, 0);
 	if (format[0] == '#')
 	{

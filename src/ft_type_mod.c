@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:24:26 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/17 15:23:33 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/11/17 17:24:26 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_type	ft_type_mod(const char *format)
 	int		i;
 
 	i = 0;
-	result = ft_type_c('%'); 
+	result = ft_type_c('%');
 	while (format[i] == ' ')
 		i++;
 	result.format += i;

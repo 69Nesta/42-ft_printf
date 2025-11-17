@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 17:09:06 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/17 16:51:57 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/11/17 17:25:04 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,18 @@
 
 int		ft_printf(const char *format, ...);
 
-typedef struct s_type {
-	int format;
+typedef struct s_type
+{
+	int	format;
 	int	printed;
 }	t_type;
 
-typedef struct s_padding {
-	char	fill;
-	int		len;
-	int		plus;
-	int		revers;
-	int		format_skip;
-}	t_padding;
-
 t_type	ft_new_t_result(int format_count, int printed);
-
 int		ft_putnbr_u(unsigned int n);
 int		ft_putnbr_base(long n, const char *base);
 int		ft_putnbr_base_u(unsigned long n, const char *base, int base_len);
-int		ft_putnbr_pre_calc(int nb);
 
-t_type	ft_type_i(int n, const char *format);
+t_type	ft_type_i(int n);
 int		ft_istype_i(const char *type);
 
 t_type	ft_type_c(char c);

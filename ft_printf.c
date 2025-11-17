@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 17:10:20 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/17 15:42:15 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/11/17 17:22:55 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	ft_processing(const char *format, va_list ap)
 
 t_type	ft_type_selector(const char *type, va_list ap)
 {
-	t_type t;
+	t_type	t;
 
 	t = ft_new_t_result(1, 0);
 	if (ft_istype_c(type))
@@ -68,9 +68,9 @@ t_type	ft_type_selector(const char *type, va_list ap)
 	else if (ft_istype_p(type))
 		return (ft_type_p(va_arg(ap, unsigned long)));
 	else if (ft_istype_i(type))
-		return (ft_type_i(va_arg(ap, int), type));
+		return (ft_type_i(va_arg(ap, int)));
 	else if (ft_istype_i(type))
-		return (ft_type_i(va_arg(ap, int), type));
+		return (ft_type_i(va_arg(ap, int)));
 	else if (ft_istype_u(type))
 		return (ft_type_u(va_arg(ap, unsigned int)));
 	else if (ft_istype_x(type))
@@ -79,8 +79,6 @@ t_type	ft_type_selector(const char *type, va_list ap)
 		return (ft_type_xx(va_arg(ap, unsigned int), type));
 	else if (ft_istype_mod(type))
 		return (ft_type_mod(type));
-	// else
-	// 	(void)va_arg(ap, int);
 	return (t);
 }
 

@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 09:16:05 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/17 15:06:07 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/11/17 17:23:36 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 t_type	ft_type_p(unsigned long pointer)
 {
 	t_type	result;
-	
-	result = ft_new_t_result(1, 0);	
+
+	result = ft_new_t_result(1, 0);
 	if (!pointer)
 		return (ft_type_s("(nil)"));
 	result.printed += write(1, &"0x", 2);
