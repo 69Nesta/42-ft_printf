@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 17:09:06 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/17 17:25:04 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/11/17 17:52:58 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stdarg.h>
 # include <unistd.h>
-# include "libft/libft.h"
 
 int		ft_printf(const char *format, ...);
 
@@ -26,6 +25,8 @@ typedef struct s_type
 }	t_type;
 
 t_type	ft_new_t_result(int format_count, int printed);
+int		ft_strlen(const char *str);
+int		ft_atoi(const char *nptr);
 int		ft_putnbr_u(unsigned int n);
 int		ft_putnbr_base(long n, const char *base);
 int		ft_putnbr_base_u(unsigned long n, const char *base, int base_len);

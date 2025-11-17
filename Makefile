@@ -13,23 +13,17 @@ SRC = ft_printf.c \
 		src/ft_type_xx.c \
 		src/ft_type_mod.c
 
-
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I. -g3
 
-OBJ_DIR = obj
+OBJ_DIR = .obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:%.c=%.o))
 
 HEADERS = ft_printf.h
 
-LIBFT_DIR = ./libft
-LIBFT = libft.a
-LIBFT_CMD = make --no-print-directory -C $(LIBFT_DIR)
-
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJ)
-	cp $(LIBFT_DIR)/$(LIBFT) $(NAME)
 	ar rcs $(NAME) $(OBJ)
 
 $(OBJ_DIR)/%.o: %.c $(HEADERS)
@@ -43,7 +37,6 @@ clean:
 	rm -rf $(OBJ_DIR)
 
 fclean: clean clean_out
-	$(LIBFT_CMD) $@
 
 re: fclean all
 
@@ -63,4 +56,4 @@ test: clean_out $(NAME) main.c
 	@echo
 	@./$(OBJ_DIR)/test.out
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re check norm test

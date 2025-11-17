@@ -1,7 +1,7 @@
 main.c
 *.a
 *.o
-obj
+.obj
 test.c
 tests
 .vscode
