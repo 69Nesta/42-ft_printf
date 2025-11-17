@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_type_c.c                                        :+:      :+:    :+:   */
+/*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/17 09:06:29 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/17 15:01:51 by rpetit           ###   ########.fr       */
+/*   Created: 2025/11/17 14:33:26 by rpetit            #+#    #+#             */
+/*   Updated: 2025/11/17 14:58:46 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_type	ft_type_c(char c)
+t_type ft_new_t_result(int format_count, int printed)
 {
-	return (ft_new_t_result(1, write(1, &c, 1)));
-}
+	t_type result;
 
-int	ft_istype_c(const char *type)
-{
-	return (type[0] == 'c');
+	result.format = format_count;
+	result.printed = printed;
+	return (result);
 }

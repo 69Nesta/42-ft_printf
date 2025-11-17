@@ -6,15 +6,15 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 17:10:20 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/17 13:03:46 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/11/17 15:11:16 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_processing(const char *format, va_list ap);
-int	ft_type_selector(const char *type, va_list ap);
-int	ft_putstr(const char *str);
+int		ft_processing(const char *format, va_list ap);
+t_type	ft_type_selector(const char *type, va_list ap);
+int		ft_putstr(const char *str);
 
 int	ft_printf(const char *format, ...)
 {
@@ -31,9 +31,10 @@ int	ft_printf(const char *format, ...)
 
 int	ft_processing(const char *format, va_list ap)
 {
-	int	i;
-	int	start_current;
-	int	total_printed;
+	int		i;
+	int		start_current;
+	int		total_printed;
+	t_type	format_result;
 
 	i = 0;
 	total_printed = 0;
@@ -46,15 +47,20 @@ int	ft_processing(const char *format, va_list ap)
 			total_printed
 				+= write(1, format + start_current, i - start_current);
 		if (format[i] == '%' && format[i + 1])
-			total_printed += ft_type_selector(format + ++i, ap);
-		if (format[i])
-			i++;
+		{
+			format_result = ft_type_selector(format + ++i, ap);
+			total_printed += format_result.printed;
+			i += format_result.format;
+		}
 	}
 	return (total_printed);
 }
 
-int	ft_type_selector(const char *type, va_list ap)
+t_type	ft_type_selector(const char *type, va_list ap)
 {
+	t_type t;
+
+	t = ft_new_t_result(1, 0);
 	if (ft_istype_c(type))
 		return (ft_type_c((char)va_arg(ap, int)));
 	else if (ft_istype_s(type))
@@ -68,12 +74,14 @@ int	ft_type_selector(const char *type, va_list ap)
 	else if (ft_istype_u(type))
 		return (ft_type_u(va_arg(ap, unsigned int)));
 	else if (ft_istype_x(type))
-		return (ft_type_x(va_arg(ap, unsigned int)));
+		return (ft_type_x(va_arg(ap, unsigned int), type));
 	else if (ft_istype_xx(type))
-		return (ft_type_xx(va_arg(ap, unsigned int)));
+		return (ft_type_xx(va_arg(ap, unsigned int), type));
 	else if (ft_istype_mod(type))
-		return (ft_type_mod());
-	return (0);
+		return (ft_type_mod(type));
+	// else
+	// 	(void)va_arg(ap, int);
+	return (t);
 }
 
 int	ft_putstr(const char *str)

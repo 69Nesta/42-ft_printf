@@ -6,17 +6,22 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 09:10:38 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/17 12:38:03 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/11/17 15:08:25 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_type_s(const char *string)
+t_type	ft_type_s(const char *string)
 {
+	t_type	result;
+
+	result = ft_new_t_result(1, 0);
 	if (!string)
-		return (write(1, &"(null)", 6));
-	return (write(1, string, ft_strlen(string)));
+		result.printed = write(1, &"(null)", 6);
+	else
+		result.printed = write(1, string, ft_strlen(string));
+	return (result);
 }
 
 int	ft_istype_s(const char *type)

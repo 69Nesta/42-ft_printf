@@ -6,18 +6,27 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 10:06:38 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/17 12:30:04 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/11/17 15:10:28 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_type_xx(unsigned int hex)
+t_type	ft_type_xx(unsigned int hex, const char *format)
 {
-	return (ft_putnbr_base_u(hex, "0123456789ABCDEF", 16));
+	t_type	result;
+	
+	result = ft_new_t_result(1, 0);
+	if (format[0] == '#')
+	{
+		result.printed = write(1, &"0x", 2);
+		result.format++;
+	}
+	result.printed += ft_putnbr_base_u(hex, "0123456789ABCDEF", 16);
+	return (result);
 }
 
 int	ft_istype_xx(const char *type)
 {
-	return (type[0] == 'X');
+	return (type[0] == 'X' || (type[0] == '#' && type[1] == 'X'));
 }
