@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_type_s.c                                        :+:      :+:    :+:   */
+/*   ft_type_x.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/17 09:10:38 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/17 12:38:03 by rpetit           ###   ########.fr       */
+/*   Created: 2025/11/17 10:03:09 by rpetit            #+#    #+#             */
+/*   Updated: 2025/11/17 13:05:32 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_type_s(const char *string)
+int	ft_type_x(unsigned int hex)
 {
-	if (!string)
-		return (write(1, &"(null)", 6));
-	return (write(1, string, ft_strlen(string)));
+	return (ft_putnbr_base_u(hex, "0123456789abcdef", 16));
 }
 
-int	ft_istype_s(const char *type)
+int	ft_istype_x(const char *type)
 {
-	return (type[0] == 's');
+	return (type[0] == 'x');
 }

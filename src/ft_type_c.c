@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 09:06:29 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/17 09:08:22 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/11/17 12:30:59 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_type_c(char c)
 	return (write(1, &c, 1));
 }
 
-int	ft_istype_c(char type)
+int	ft_istype_c(const char *type)
 {
-	return (type == 'c');
+	return (type[0] == 'c');
 }

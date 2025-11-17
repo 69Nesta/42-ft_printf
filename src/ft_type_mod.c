@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_type_s.c                                        :+:      :+:    :+:   */
+/*   ft_type_mod.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/17 09:10:38 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/17 12:38:03 by rpetit           ###   ########.fr       */
+/*   Created: 2025/11/17 12:24:26 by rpetit            #+#    #+#             */
+/*   Updated: 2025/11/17 12:31:41 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_type_s(const char *string)
+int	ft_type_mod(void)
 {
-	if (!string)
-		return (write(1, &"(null)", 6));
-	return (write(1, string, ft_strlen(string)));
+	return (ft_type_c('%'));
 }
 
-int	ft_istype_s(const char *type)
+int	ft_istype_mod(const char *type)
 {
-	return (type[0] == 's');
+	int	i;
+
+	i = 0;
+	while (type[i] == ' ')
+		i++;
+	return (type[i] == '%');
 }

@@ -1,9 +1,17 @@
 NAME = libftprintf.a
 
 SRC = ft_printf.c \
+		src/ft_putnbr_base.c \
+		src/ft_putnbr.c \
 		src/ft_type_c.c \
 		src/ft_type_s.c \
-		src/ft_type_i.c
+		src/ft_type_p.c \
+		src/ft_type_i.c \
+		src/ft_type_u.c \
+		src/ft_type_x.c \
+		src/ft_type_xx.c \
+		src/ft_type_mod.c
+
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I. -g3
