@@ -6,15 +6,14 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 17:10:20 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/17 17:22:55 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/11/18 08:23:42 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_processing(const char *format, va_list ap);
-t_type	ft_type_selector(const char *type, va_list ap);
-int		ft_putstr(const char *str);
+static int		ft_processing(const char *format, va_list ap);
+static t_type	ft_type_selector(const char *type, va_list ap);
 
 int	ft_printf(const char *format, ...)
 {
@@ -29,7 +28,7 @@ int	ft_printf(const char *format, ...)
 	return (printed_char_count);
 }
 
-int	ft_processing(const char *format, va_list ap)
+static int	ft_processing(const char *format, va_list ap)
 {
 	int		i;
 	int		start_current;
@@ -56,7 +55,7 @@ int	ft_processing(const char *format, va_list ap)
 	return (total_printed);
 }
 
-t_type	ft_type_selector(const char *type, va_list ap)
+static t_type	ft_type_selector(const char *type, va_list ap)
 {
 	t_type	t;
 
@@ -80,9 +79,4 @@ t_type	ft_type_selector(const char *type, va_list ap)
 	else if (ft_istype_mod(type))
 		return (ft_type_mod(type));
 	return (t);
-}
-
-int	ft_putstr(const char *str)
-{
-	return (write(1, str, ft_strlen(str)));
 }

@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 09:16:05 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/17 17:23:36 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/11/18 08:28:45 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_type	ft_type_p(unsigned long pointer)
 	if (!pointer)
 		return (ft_type_s("(nil)"));
 	result.printed += write(1, &"0x", 2);
-	result.printed += ft_putnbr_base_u(pointer, "0123456789abcdef", 16);
+	result.printed += ft_putnbr_base(pointer, "0123456789abcdef", 16);
 	return (result);
 }
 

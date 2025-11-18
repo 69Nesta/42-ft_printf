@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 10:03:09 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/17 17:23:59 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/11/18 08:28:45 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_type	ft_type_x(unsigned int hex, const char *format)
 		result.printed = write(1, &"0x", 2);
 		result.format++;
 	}
-	result.printed += ft_putnbr_base_u(hex, "0123456789abcdef", 16);
+	result.printed += ft_putnbr_base(hex, "0123456789abcdef", 16);
 	return (result);
 }
 
