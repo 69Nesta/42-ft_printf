@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 17:10:20 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/21 18:02:24 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/11/26 10:31:48 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ static t_type	ft_type_selector(const char *type, va_list *ap)
 	else if (ft_istype_u(type))
 		return (ft_type_u(va_arg(*ap, unsigned int)));
 	else if (ft_istype_x(type))
-		return (ft_type_x(va_arg(*ap, unsigned int), type));
+		return (ft_type_x(va_arg(*ap, unsigned int)));
 	else if (ft_istype_xx(type))
-		return (ft_type_xx(va_arg(*ap, unsigned int), type));
+		return (ft_type_xx(va_arg(*ap, unsigned int)));
 	else if (ft_istype_mod(type))
 		return (ft_type_mod(type));
 	return (t);

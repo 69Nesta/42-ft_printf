@@ -6,13 +6,13 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 10:06:38 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/21 18:07:12 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/11/26 10:29:27 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_type	ft_type_xx(unsigned int hex, const char *format)
+t_type	ft_type_xx(unsigned int hex)
 {
 	t_type	result;
 

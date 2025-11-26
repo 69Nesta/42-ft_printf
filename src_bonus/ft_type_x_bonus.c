@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_type_x.c                                        :+:      :+:    :+:   */
+/*   ft_type_x_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 10:03:09 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/26 10:29:22 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/11/26 11:46:35 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
-t_type	ft_type_x(unsigned int hex)
+int	ft_type_x(unsigned int hex, const t_args *arg)
 {
-	t_type	result;
+	int	count;
 
-	result = ft_new_t_result(1, 0);
-	result.printed += ft_putnbr_base(hex, "0123456789abcdef", 16);
-	return (result);
+	count = 0;
+	count += ft_putnbr_base(hex, "0123456789abcdef", 16);
+	return (count);
 }
 
-int	ft_istype_x(const char *type)
+int	ft_istype_x(const t_args *arg)
 {
-	return (type[0] == 'x');
+	return (arg->type == 'x');
 }

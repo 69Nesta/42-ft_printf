@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_type_x.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/17 10:03:09 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/26 10:29:22 by rpetit           ###   ########.fr       */
+/*   Created: 2025/11/17 09:53:31 by rpetit            #+#    #+#             */
+/*   Updated: 2025/11/26 11:52:41 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
-t_type	ft_type_x(unsigned int hex)
+int	ft_putnbr(unsigned int n)
 {
-	t_type	result;
+	int	count;
 
-	result = ft_new_t_result(1, 0);
-	result.printed += ft_putnbr_base(hex, "0123456789abcdef", 16);
-	return (result);
-}
-
-int	ft_istype_x(const char *type)
-{
-	return (type[0] == 'x');
+	count = 0;
+	if (n / 10 > 0)
+		count = ft_putnbr(n / 10);
+	return (count + ft_putchar(n % 10 + '0'));
 }

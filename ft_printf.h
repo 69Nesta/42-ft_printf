@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 17:09:06 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/18 08:29:25 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/11/26 10:31:57 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ int		ft_istype_p(const char *type);
 t_type	ft_type_u(int n);
 int		ft_istype_u(const char *type);
 
-t_type	ft_type_x(unsigned int hex, const char *format);
+t_type	ft_type_x(unsigned int hex);
 int		ft_istype_x(const char *type);
 
-t_type	ft_type_xx(unsigned int hex, const char *format);
+t_type	ft_type_xx(unsigned int hex);
 int		ft_istype_xx(const char *type);
 
 t_type	ft_type_mod(const char *format);

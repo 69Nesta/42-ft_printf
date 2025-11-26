@@ -1,7 +1,6 @@
 NAME = libftprintf.a
 
 SRC = ft_printf.c \
-		src/ft_atoi.c \
 		src/ft_utils.c \
 		src/ft_putnbr_base.c \
 		src/ft_putnbr.c \
@@ -14,28 +13,49 @@ SRC = ft_printf.c \
 		src/ft_type_xx.c \
 		src/ft_type_mod.c
 
+SRC_BONNUS = ft_printf_bonus.c \
+				src_bonus/ft_atoi_bonus.c \
+				src_bonus/ft_utils_bonus.c \
+				src_bonus/ft_format_arg_bonus.c \
+				src_bonus/ft_putnbr_base_bonus.c \
+				src_bonus/ft_putnbr_bonus.c \
+				src_bonus/ft_type_c_bonus.c \
+				src_bonus/ft_type_s_bonus.c \
+				src_bonus/ft_type_p_bonus.c \
+				src_bonus/ft_type_i_bonus.c \
+				src_bonus/ft_type_u_bonus.c \
+				src_bonus/ft_type_x_bonus.c \
+				src_bonus/ft_type_xx_bonus.c \
+				src_bonus/ft_type_mod_bonus.c
+
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I. -g3
+#CFLAGS = -Wall -Wextra -Werror -I. -g3
+CFLAGS = -I. -g3
 
 OBJ_DIR = .obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:%.c=%.o))
+OBJ_BONUS = $(addprefix $(OBJ_DIR)/, $(SRC_BONNUS:%.c=%.o))
 
 HEADERS = ft_printf.h
+HEADERS_BONNUS = ft_printf_bonus.h
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJ)
+$(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)
+
+bonus: $(OBJ_BONUS)
+	ar rcs $(NAME) $(OBJ_BONUS)
 
 $(OBJ_DIR)/%.o: %.c $(HEADERS)
 	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(LIBFT):
-	@$(LIBFT_CMD)
-
 clean:
 	rm -rf $(OBJ_DIR)
+
+clean_out:
+	rm -f $(NAME)
 
 fclean: clean clean_out
 
@@ -43,13 +63,10 @@ re: fclean all
 
 check: norm
 
-clean_out:
-	rm -f $(NAME)
-
 norm:
 	@clear
 	@echo "\n------------ Norm ------------\n"
-	@norminette $(SRC) $(HEADERS)
+	@norminette $(SRC) $(SRC_BONNUS) $(HEADERS)
 	@echo
 
 test: clean_out $(NAME) main.c
@@ -57,4 +74,9 @@ test: clean_out $(NAME) main.c
 	@echo
 	@./$(OBJ_DIR)/test.out
 
-.PHONY: all clean fclean re check norm test
+test_bonus: clean_out bonus main.c
+	$(CC) $(CFLAGS) main.c $(NAME) -o $(OBJ_DIR)/test.out
+	@echo
+	@./$(OBJ_DIR)/test.out
+
+.PHONY: all bonus clean clean_out fclean re check norm test test_bonus
