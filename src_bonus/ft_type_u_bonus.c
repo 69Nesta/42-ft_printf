@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 08:33:29 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/26 11:45:23 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/11/28 11:03:45 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	ft_type_u(int n, const t_args *arg)
 {
+	(void)arg;
 	return (ft_putnbr(n));
 }
 

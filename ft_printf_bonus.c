@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 17:10:20 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/26 12:39:29 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/11/28 16:23:56 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static int		ft_format(const char *format, va_list *ap);
 static int		ft_type_selector(t_args *arg, va_list *ap);
-// static void		print_args(t_args args);
+static void		print_args(t_args args);
 
 int	ft_printf(const char *format, ...)
 {
@@ -67,8 +67,6 @@ static int	ft_type_selector(t_args *arg, va_list *ap)
 		return (ft_type_p(va_arg(*ap, unsigned long), arg));
 	else if (ft_istype_i(arg))
 		return (ft_type_i(va_arg(*ap, int), arg));
-	else if (ft_istype_i(arg))
-		return (ft_type_i(va_arg(*ap, int), arg));
 	else if (ft_istype_u(arg))
 		return (ft_type_u(va_arg(*ap, unsigned int), arg));
 	else if (ft_istype_x(arg))
@@ -80,12 +78,12 @@ static int	ft_type_selector(t_args *arg, va_list *ap)
 	return (0);
 }
 
-// void	print_args(t_args args)
-// {
-// 	printf("\n----------------------\nType: %c\nLenght: %d\nWidth: %d\n"
-// 		"Precision: %d\nLeft_align: %d\nzero_pad: %d\nshow_sign: %d\n"
-// 		"space_sign: %d\nalternate_form: %d\n-------- %d --------\n",
-// 		args.type, args.length, args.width, args.precision, args.left_align,
-// 		args.zero_pad, args.show_sign, args.space_sign, args.alternate_form,
-// 		args.arg_len);
-// }
+void	print_args(t_args args)
+{
+	printf("\n----------------------\nType: %c\nLenght: %d\nWidth: %d\n"
+		"Precision: %d\nLeft_align: %d\nzero_pad: %d\nshow_sign: %d\n"
+		"space_sign: %d\nalternate_form: %d\n-------- %d --------\n",
+		args.type, args.length, args.width, args.precision, args.left_align,
+		args.zero_pad, args.show_sign, args.space_sign, args.alternate_form,
+		args.arg_len);
+}

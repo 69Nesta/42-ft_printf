@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 09:10:38 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/26 11:44:36 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/11/28 16:21:44 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,25 @@
 int	ft_type_s(const char *string, const t_args *arg)
 {
 	int	count;
-
+	int len;
+	
 	count = 0;
-	if (!string)
-		count = write(1, &"(null)", 6);
-	else
-		count = ft_putstr(string);
+	if (!string && arg->precision)
+		len = 6;
+	else if (!string)
+		len = 6;
+	else if (string)
+		len = ft_strlen(string);
+	if (string && len > arg->precision && arg->precision)
+		len = arg->precision;
+	else if (!string && len > arg->precision && arg->precision)
+		len = 0;
+	count += ft_right_align(arg, ' ', len, 1);
+	if (!string && len)
+		count += write(1, &"(null)", len);
+	else if (string)
+		count += write(1, string, len);
+	count += ft_left_align(arg, ' ', len);
 	return (count);
 }
 

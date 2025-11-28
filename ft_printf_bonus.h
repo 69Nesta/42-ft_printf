@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 17:09:06 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/26 12:37:11 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/11/28 16:26:06 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,23 @@ typedef struct s_args
 t_atol	ft_atol(const char *nptr);
 int		ft_atoi(const char *nptr);
 int		ft_putnbr(unsigned int n);
+int		ft_putnbr_len(unsigned int n);
 int		ft_putnbr_base(unsigned long n, const char *base, int base_len);
+int		ft_putnbr_base_len(unsigned long n, int base_len);
 
 // utils
 int		ft_strlen(const char *str);
 int		ft_putchar(char c);
 int		ft_putstr(const char *str);
-int 	ft_ischarset(char c, char *set);
-int 	ft_is_num(const char c);
+int		ft_ischarset(char c, char *set);
+int		ft_is_num(const char c);
 
 // format args
 t_args	ft_format_arg(const char *token);
+int		ft_right_align(const t_args *arg, const char fill, int w, int is_null);
+int		ft_left_align(const t_args *arg, const char fill, int printed_w);
+int		ft_middle_zero(const t_args *arg, const char fill, int printed_w);
+
 
 // printf types
 int		ft_type_i(int n, const t_args *arg);

@@ -14,6 +14,7 @@ SRC = ft_printf.c \
 		src/ft_type_mod.c
 
 SRC_BONNUS = ft_printf_bonus.c \
+				src_bonus/ft_alignment_bonus.c \
 				src_bonus/ft_atoi_bonus.c \
 				src_bonus/ft_utils_bonus.c \
 				src_bonus/ft_format_arg_bonus.c \
@@ -29,7 +30,7 @@ SRC_BONNUS = ft_printf_bonus.c \
 				src_bonus/ft_type_mod_bonus.c
 
 CC = cc
-#CFLAGS = -Wall -Wextra -Werror -I. -g3
+# CFLAGS = -Wall -Wextra -Werror -I. -g3
 CFLAGS = -I. -g3
 
 OBJ_DIR = .obj
@@ -74,9 +75,9 @@ test: clean_out $(NAME) main.c
 	@echo
 	@./$(OBJ_DIR)/test.out
 
-test_bonus: clean_out bonus main.c
-	$(CC) $(CFLAGS) main.c $(NAME) -o $(OBJ_DIR)/test.out
+test_bonus: clean_out bonus main_bonus.c
+	$(CC) $(CFLAGS) main_bonus.c $(NAME) -o $(OBJ_DIR)/test_bonus.out
 	@echo
-	@./$(OBJ_DIR)/test.out
+	@./$(OBJ_DIR)/test_bonus.out
 
 .PHONY: all bonus clean clean_out fclean re check norm test test_bonus

@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:24:26 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/26 11:20:51 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/11/28 11:03:22 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	ft_type_mod(const t_args *arg)
 {
+	(void)arg;
 	return (ft_putchar('%'));
 }
 

@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 10:06:38 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/26 11:50:29 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/11/28 11:03:51 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	ft_type_xx(unsigned int hex, const t_args *arg)
 {
 	int	count;
 
+	(void)arg;
 	count = 0;
 	count += ft_putnbr_base(hex, "0123456789ABCDEF", 16);
 	return (count);

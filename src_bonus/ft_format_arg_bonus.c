@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 12:35:27 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/26 12:39:13 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/11/28 11:20:04 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static void	ft_fill_arg(const char *token, int *i, t_args *arg)
 	{
 		atol = ft_atol(token + *i + 1);
 		arg->precision = atol.value;
-		*i += atol.len - (atol.len > 0);
+		*i += atol.len;
 	}
 	else if (token[*i] == ' ')
 		arg->space_sign = 1;

@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 09:16:05 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/26 11:40:44 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/11/28 16:21:55 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,29 @@
 int	ft_type_p(unsigned long pointer, const t_args *arg)
 {
 	int	count;
+	int len;
 
 	count = 0;
 	if (!pointer)
-		return (ft_putstr("(nil)"));
-	count += write(1, &"0x", 2);
-	count += ft_putnbr_base(pointer, "0123456789abcdef", 16);
+		len = 5;
+	else
+		len = ft_putnbr_base_len(pointer, 16) + 2;
+	if (pointer && arg->show_sign)
+		len++;
+	count += ft_right_align(arg, ' ', len, pointer == 0);
+	if (!pointer)
+		count += ft_putstr("(nil)");
+	else
+	{
+		if (arg->show_sign)
+			count += ft_putchar('+');
+		else if (arg->space_sign)
+			count += ft_putchar(' ');
+		count += write(1, &"0x", 2);
+		ft_middle_zero(arg, '0', len);
+		count += ft_putnbr_base(pointer, "0123456789abcdef", 16);
+	}
+	count += ft_left_align(arg, ' ', len);
 	return (count);
 }
 
