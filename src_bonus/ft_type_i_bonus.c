@@ -6,11 +6,15 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 08:33:29 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/28 16:42:35 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/12/01 15:35:45 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
+
+static int ft_right_align_i(const t_args *arg, int n, int nlen);
+static int ft_middle_align_i(const t_args *arg, int n, int nlen);
+
 
 int	ft_type_i(int n, const t_args *arg)
 {
@@ -19,18 +23,25 @@ int	ft_type_i(int n, const t_args *arg)
 
 	count = 0;
 	if (n < 0)
-		len = ft_putnbr_len(n * -1) + 1;
+		len = ft_putnbr_len(n * -1, arg) + 1;
 	else
-		len = ft_putnbr_len(n);
-	count += ft_right_align(arg, '0' * arg->zero_pad + ' ' * !arg->zero_pad, len, n > 0);
+		len = ft_putnbr_len(n, arg);
+	count += ft_right_align_i(arg, n, len);
+	count += ft_middle_align_i(arg, n, len);
+
 	if (n < 0)
 	{
-		count += ft_putchar('-');
-		count += ft_middle_zero(arg, '0', len);
+		// count += ft_putchar('-');
 		count += ft_putnbr(n * -1);
 	}
 	else
+	{
+		// if (arg->space_sign)
+		// 	count += ft_putchar(' ');
+		// else if (arg->show_sign)
+		// 	count += ft_putchar('+');
 		count += ft_putnbr(n);
+	}
 	count += ft_left_align(arg, ' ', len);
 	return (count);
 }
@@ -39,3 +50,69 @@ int	ft_istype_i(const t_args *arg)
 {
 	return (arg->type == 'i' || arg->type == 'd');
 }
+
+int		ft_max(int a, int b)
+{
+	if (a > b)
+		return (a);
+	return (b);
+}
+
+static int ft_right_align_i(const t_args *arg, int n, int nlen)
+{
+	int	i;
+	int	printed;
+	
+	i = 0;
+	printed = 0;
+	if (arg->left_align)
+		return (printed);
+	if ((n < 0 || arg->show_sign || arg->space_sign) && arg->zero_pad)
+		printed += ft_putchar('+' * (n >= 0 && arg->show_sign)
+							+ '-' * (n < 0)
+							+ ' ' * (n >= 0 && arg->space_sign));
+	while ((ft_max(nlen, arg->precision + (n < 0))) + i < arg->width)
+	{
+		printed += ft_putchar(' ' * (!arg->zero_pad || arg->precision) + '0' * (arg->zero_pad && !arg->precision));
+		i++;
+	}
+	return (printed);
+}
+
+static int ft_middle_align_i(const t_args *arg, int n, int nlen)
+{
+	int	i;
+	int	printed;
+	
+	i = 0;
+	printed = 0;
+	if ((n < 0 || arg->show_sign || arg->space_sign) && !arg->zero_pad)
+		printed += ft_putchar('+' * (n >= 0 && arg->show_sign)
+							+ '-' * (n < 0)
+							+ ' ' * (n >= 0 && arg->space_sign));
+	if (arg->left_align || !(arg->zero_pad || arg->precision > (nlen - (n < 0))))
+		return (printed);
+	while (nlen + i - (n < 0) < arg->precision)
+	{
+		printed += ft_putchar('0');
+		i++;
+	}
+	return (printed);
+}
+
+// static int ft_left_align_i(const t_args *arg)
+// {
+// 	int	i;
+// 	int	printed;
+	
+// 	i = 0;
+// 	printed = 0;
+// 	if (arg->width == 0 || !arg->left_align)
+// 		return (printed);
+// 	while (printed_w + i < arg->width)
+// 	{
+// 		printed += ft_putchar(fill);
+// 		i++;
+// 	}
+// 	return (printed);
+// }

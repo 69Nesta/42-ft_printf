@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 09:53:31 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/28 16:25:38 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/12/01 11:29:05 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,13 @@ int	ft_putnbr(unsigned int n)
 	return (count + ft_putchar(n % 10 + '0'));
 }
 
-int	ft_putnbr_len(unsigned int n)
+int	ft_putnbr_len(unsigned int n, const t_args *arg)
 {
 	int	count;
 
 	count = 0;
+	if (arg->space_sign || arg->show_sign)
+		count++;
 	while (n > 0)
 	{
 		n /= 10;
