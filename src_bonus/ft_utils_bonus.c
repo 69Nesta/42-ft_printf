@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 14:33:26 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/28 11:03:53 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/12/02 17:58:06 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,11 @@ int	ft_ischarset(char c, char *set)
 int	ft_is_num(const char c)
 {
 	return (c >= '0' && c <= '9');
+}
+
+int		ft_max(int a, int b)
+{
+	if (a > b)
+		return (a);
+	return (b);
 }

@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 17:09:06 by rpetit            #+#    #+#             */
-/*   Updated: 2025/12/01 11:28:35 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/12/02 17:58:33 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int		ft_putchar(char c);
 int		ft_putstr(const char *str);
 int		ft_ischarset(char c, char *set);
 int		ft_is_num(const char c);
+int		ft_max(int a, int b);
+
 
 // format args
 t_args	ft_format_arg(const char *token);
@@ -83,7 +85,7 @@ int		ft_istype_s(const t_args *arg);
 int		ft_type_p(unsigned long pointer, const t_args *arg);
 int		ft_istype_p(const t_args *arg);
 
-int		ft_type_u(int n, const t_args *arg);
+int		ft_type_u(unsigned int n, const t_args *arg);
 int		ft_istype_u(const t_args *arg);
 
 int		ft_type_x(unsigned int hex, const t_args *arg);

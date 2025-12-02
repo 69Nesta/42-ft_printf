@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 08:33:29 by rpetit            #+#    #+#             */
-/*   Updated: 2025/12/02 17:43:13 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/12/02 17:57:52 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static int ft_right_align_i(const t_args *arg, int n, int nlen);
 static int ft_middle_align_i(const t_args *arg, int n, int nlen);
-
 
 int	ft_type_i(int n, const t_args *arg)
 {
@@ -39,13 +38,6 @@ int	ft_type_i(int n, const t_args *arg)
 int	ft_istype_i(const t_args *arg)
 {
 	return (arg->type == 'i' || arg->type == 'd');
-}
-
-int		ft_max(int a, int b)
-{
-	if (a > b)
-		return (a);
-	return (b);
 }
 
 static int ft_right_align_i(const t_args *arg, int n, int nlen)
@@ -89,20 +81,3 @@ static int ft_middle_align_i(const t_args *arg, int n, int nlen)
 	}
 	return (printed);
 }
-
-// static int ft_left_align_i(const t_args *arg)
-// {
-// 	int	i;
-// 	int	printed;
-	
-// 	i = 0;
-// 	printed = 0;
-// 	if (arg->width == 0 || !arg->left_align)
-// 		return (printed);
-// 	while (printed_w + i < arg->width)
-// 	{
-// 		printed += ft_putchar(fill);
-// 		i++;
-// 	}
-// 	return (printed);
-// }

@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 10:14:46 by rpetit            #+#    #+#             */
-/*   Updated: 2025/12/02 17:39:30 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/12/02 19:06:14 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,19 @@ void	test_type_c(void);
 void	test_type_s(void);
 void	test_type_p(void);
 void	test_type_i(void);
+void	test_type_u(void);
+void	test_type_x(void);
+void	test_type_xx(void);
 
 int main(void)
 {
 	// test_type_c();
 	// test_type_s();
 	// test_type_p();
-	test_type_i();
+	// test_type_i();
+	// test_type_u();
+	test_type_x();
+	test_type_xx();
 }
 
 void test_type_c(void)
@@ -135,3 +141,95 @@ void test_type_i(void)
 	TEST("|%-5.3i|", 1, 21);
 	TEST("|%.-3i|", 1, 21);
 }
+
+void test_type_u(void)
+{
+    printf("\n__ TEST TYPE U __\n\n");
+    printf("--------------------\n");
+    TEST("|%u|", 42, 1);
+    TEST("|%u|", (unsigned int)-42, 2);
+    TEST("|%5u|", 42, 3);
+    TEST("|%5u|", (unsigned int)-42, 4);
+    TEST("|%-5u|", 42, 5);
+    TEST("|%-5u|", (unsigned int)-42, 6);
+    TEST("|%05u|", 42, 7);
+    TEST("|%05u|", (unsigned int)-42, 8);
+    TEST("|%+u|", 42, 9);
+    TEST("|%+u|", (unsigned int)-42, 10);
+    TEST("|% u|", 42, 11);
+    TEST("|% u|", (unsigned int)-42, 12);
+    TEST("|%#u|", 42, 13);
+    TEST("|%5.3u|", 42, 14);
+    TEST("|%5.3u|", (unsigned int)-42, 15);
+    TEST("|%05.3u|", 42, 16);
+    TEST("|%-+5u|", 42, 17);
+    TEST("|%+05u|", 42, 18);
+    TEST("|% 05u|", 42, 19);
+    TEST("|%.3u|", 1, 20);
+    TEST("|%-.3u|", 1, 21);
+    TEST("|%-5.3u|", 1, 22);
+    TEST("|%.-3u|", 1, 23);
+}
+
+void test_type_x(void)
+{
+    printf("\n__ TEST TYPE X (hex) __\n\n");
+    printf("--------------------\n");
+
+    TEST("|%x|", 42, 1);
+    TEST("|%x|", -42, 2);
+    TEST("|%5x|", 42, 3);
+    TEST("|%5x|", -42, 4);
+    TEST("|%-5x|", 42, 5);
+    TEST("|%-5x|", -42, 6);
+    TEST("|%05x|", 42, 7);
+    TEST("|%05x|", -42, 8);
+    TEST("|%+x|", 42, 9);
+    TEST("|%+x|", -42, 10);
+    TEST("|% x|", 42, 11);
+    TEST("|% x|", -42, 12);
+    TEST("|%#x|", 42, 13);
+    TEST("|%5.3x|", 42, 14);
+    TEST("|%5.3x|", -42, 15);
+    TEST("|%05.3x|", 42, 16);
+    TEST("|%-+5x|", 42, 17);
+    TEST("|%+05x|", 42, 18);
+    TEST("|% 05x|", 42, 19);
+    TEST("|%.3x|", 1, 20);
+    TEST("|%-.3x|", 1, 21);
+    TEST("|%-5.3x|", 1, 22);
+    TEST("|%.-3x|", 1, 23);
+    TEST("|%#10x|", 42, 24);
+    TEST("|%0#10x|", 42, 25);
+}
+
+void test_type_xx(void)
+{
+    printf("\n__ TEST TYPE X (HEX CAPITAL) __\n\n");
+    printf("--------------------\n");
+
+    TEST("|%X|", 42, 1);
+    TEST("|%X|", -42, 2);
+    TEST("|%5X|", 42, 3);
+    TEST("|%5X|", -42, 4);
+    TEST("|%-5X|", 42, 5);
+    TEST("|%-5X|", -42, 6);
+    TEST("|%05X|", 42, 7);
+    TEST("|%05X|", -42, 8);
+    TEST("|%+X|", 42, 9);
+    TEST("|%+X|", -42, 10);
+    TEST("|% X|", 42, 11);
+    TEST("|% X|", -42, 12);
+    TEST("|%#X|", 42, 13);
+    TEST("|%5.3X|", 42, 14);
+    TEST("|%5.3X|", -42, 15);
+    TEST("|%05.3X|", 42, 16);
+    TEST("|%-+5X|", 42, 17);
+    TEST("|%+05X|", 42, 18);
+    TEST("|% 05X|", 42, 19);
+    TEST("|%.3X|", 1, 20);
+    TEST("|%-.3X|", 1, 21);
+    TEST("|%-5.3X|", 1, 22);
+    TEST("|%.-3X|", 1, 23);
+}
+
