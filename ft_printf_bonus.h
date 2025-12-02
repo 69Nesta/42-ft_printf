@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 17:09:06 by rpetit            #+#    #+#             */
-/*   Updated: 2025/12/02 17:58:33 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/12/02 19:25:44 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,13 @@ int		ft_putstr(const char *str);
 int		ft_ischarset(char c, char *set);
 int		ft_is_num(const char c);
 int		ft_max(int a, int b);
-
+void	ft_swrite(int *count, int write_value);
 
 // format args
 t_args	ft_format_arg(const char *token);
 int		ft_right_align(const t_args *arg, const char fill, int w, int is_null);
 int		ft_left_align(const t_args *arg, const char fill, int printed_w);
 int		ft_middle_zero(const t_args *arg, const char fill, int printed_w);
-
 
 // printf types
 int		ft_type_i(int n, const t_args *arg);

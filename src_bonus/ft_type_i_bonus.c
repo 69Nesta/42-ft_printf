@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 08:33:29 by rpetit            #+#    #+#             */
-/*   Updated: 2025/12/02 17:57:52 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/12/02 19:37:23 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,18 @@ int	ft_type_i(int n, const t_args *arg)
 		len = ft_putnbr_len(n * -1, arg) + 1;
 	else
 		len = ft_putnbr_len(n, arg);
-	count += ft_right_align_i(arg, n, len);
-	count += ft_middle_align_i(arg, n, len);
+	ft_swrite(&count, ft_right_align_i(arg, n, len));
+	// count += ft_right_align_i(arg, n, len);
+	ft_swrite(&count, ft_middle_align_i(arg, n, len));
+	// count += ft_middle_align_i(arg, n, len);
 	if (n < 0)
-		count += ft_putnbr(n * -1);
+		ft_swrite(&count, ft_putnbr(n * -1));
+		// count += ft_putnbr(n * -1);
 	else
-		count += ft_putnbr(n);
-	count += ft_left_align(arg, ' ', count);
+		ft_swrite(&count, ft_putnbr(n));
+		// count += ft_putnbr(n);
+	ft_swrite(&count, ft_left_align(arg, ' ', count));
+	// count += ft_left_align(arg, ' ', count);
 	return (count);
 }
 
@@ -50,12 +55,12 @@ static int ft_right_align_i(const t_args *arg, int n, int nlen)
 	if (arg->left_align)
 		return (printed);
 	if ((n < 0 || arg->show_sign || arg->space_sign) && arg->zero_pad)
-		printed += ft_putchar('+' * (n >= 0 && arg->show_sign)
+		ft_swrite(&printed, ft_putchar('+' * (n >= 0 && arg->show_sign)
 							+ '-' * (n < 0)
-							+ ' ' * (n >= 0 && arg->space_sign));
+							+ ' ' * (n >= 0 && arg->space_sign)));
 	while ((ft_max(nlen, arg->precision + (n < 0))) + i < arg->width)
 	{
-		printed += ft_putchar(' ' * (!arg->zero_pad || arg->precision) + '0' * (arg->zero_pad && !arg->precision));
+		ft_swrite(&printed, ft_putchar(' ' * (!arg->zero_pad || arg->precision) + '0' * (arg->zero_pad && !arg->precision)));
 		i++;
 	}
 	return (printed);
@@ -69,14 +74,14 @@ static int ft_middle_align_i(const t_args *arg, int n, int nlen)
 	i = 0;
 	printed = 0;
 	if ((n < 0 || arg->show_sign || arg->space_sign) && !arg->zero_pad)
-		printed += ft_putchar('+' * (n >= 0 && arg->show_sign)
+		ft_swrite(&printed, ft_putchar('+' * (n >= 0 && arg->show_sign)
 							+ '-' * (n < 0)
-							+ ' ' * (n >= 0 && arg->space_sign));
+							+ ' ' * (n >= 0 && arg->space_sign)));
 	if (!(arg->zero_pad || arg->precision > (nlen - (n < 0))))
 		return (printed);
 	while (nlen + i - (n < 0) < arg->precision)
 	{
-		printed += ft_putchar('0');
+		ft_swrite(&printed, ft_putchar('0'));
 		i++;
 	}
 	return (printed);

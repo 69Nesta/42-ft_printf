@@ -17,6 +17,8 @@ SRC_BONNUS = ft_printf_bonus.c \
 				src_bonus/ft_alignment_bonus.c \
 				src_bonus/ft_atoi_bonus.c \
 				src_bonus/ft_utils_bonus.c \
+				src_bonus/ft_max_bonus.c \
+				src_bonus/ft_swrite_bonus.c \
 				src_bonus/ft_format_arg_bonus.c \
 				src_bonus/ft_putnbr_base_bonus.c \
 				src_bonus/ft_putnbr_bonus.c \

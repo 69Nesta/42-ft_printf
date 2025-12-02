@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 08:33:29 by rpetit            #+#    #+#             */
-/*   Updated: 2025/12/02 18:08:40 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/12/02 19:48:55 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static int ft_right_align_u(const t_args *arg, int nlen);
 static int ft_middle_align_u(const t_args *arg, int nlen);
-
 
 int	ft_type_u(unsigned int n, const t_args *arg)
 {
@@ -25,10 +24,14 @@ int	ft_type_u(unsigned int n, const t_args *arg)
 	len = ft_putnbr_len(n, arg);
 	if (arg->space_sign || arg->show_sign)
 		len--;
-	count += ft_right_align_u(arg, len);
-	count += ft_middle_align_u(arg, len);
-	count += ft_putnbr(n);
-	count += ft_left_align(arg, ' ', count);
+	ft_swrite(&count, ft_right_align_u(arg, len));
+	// count += ft_right_align_u(arg, len);
+	ft_swrite(&count, ft_middle_align_u(arg, len));
+	// count += ft_middle_align_u(arg, len);
+	ft_swrite(&count, ft_putnbr(n));
+	// count += ft_putnbr(n);
+	ft_swrite(&count, ft_left_align(arg, ' ', count));
+	// count += ft_left_align(arg, ' ', count);
 	return (count);
 }
 
@@ -49,7 +52,7 @@ static int ft_right_align_u(const t_args *arg, int nlen)
 		return (printed);
 	while ((ft_max(nlen, arg->precision)) + i < arg->width)
 	{
-		printed += ft_putchar(' ' * (!arg->zero_pad || arg->precision) + '0' * (arg->zero_pad && !arg->precision));
+		ft_swrite(&printed, ft_putchar(' ' * (!arg->zero_pad || arg->precision) + '0' * (arg->zero_pad && !arg->precision)));
 		i++;
 	}
 	return (printed);
@@ -66,7 +69,7 @@ static int ft_middle_align_u(const t_args *arg, int nlen)
 		return (printed);
 	while (nlen + i < arg->precision)
 	{
-		printed += ft_putchar('0');
+		ft_swrite(&printed, ft_putchar('0'));
 		i++;
 	}
 	return (printed);

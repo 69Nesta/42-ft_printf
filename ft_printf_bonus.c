@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 17:10:20 by rpetit            #+#    #+#             */
-/*   Updated: 2025/12/02 17:39:34 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/12/02 19:54:09 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,18 @@ static int	ft_format(const char *format, va_list *ap)
 
 	i = 0;
 	total_printed = 0;
-	while (format[i])
+	while (format[i] && total_printed >= 0)
 	{
 		i_start = i;
 		while (format[i] && format[i] != '%')
 			i++;
 		if (i > i_start && format[i_start])
-			total_printed += write(1, format + i_start, i - i_start);
-		if (format[i] == '%' && format[i + 1])
+			ft_swrite(&total_printed, write(1, format + i_start, i - i_start));
+		if (format[i] == '%' && format[i + 1] && total_printed >= 0)
 		{
 			arg = ft_format_arg(format + ++i);
 			// print_args(arg);
-			total_printed += ft_type_selector(&arg, ap);
+			ft_swrite(&total_printed, ft_type_selector(&arg, ap));
 			i += arg.arg_len;
 		}
 	}

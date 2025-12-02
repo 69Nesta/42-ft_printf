@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 10:14:46 by rpetit            #+#    #+#             */
-/*   Updated: 2025/12/02 19:08:10 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/12/02 20:44:28 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ int main(void)
 {
 	// test_type_c();
 	// test_type_s();
-	// test_type_p();
+	test_type_p();
 	// test_type_i();
 	// test_type_u();
-	test_type_x();
-	test_type_xx();
+	// test_type_x();
+	// test_type_xx();
 }
 
 void test_type_c(void)
@@ -94,7 +94,8 @@ void test_type_p(void)
 	printf("\n__ TEST TYPE P __\n\n");
 	printf("--------------------\n");
 	TEST("|%p|", ptr, 1);
-	TEST("|%p|", null_ptr, 2);
+	TEST("|%p|", 0, 2);
+	printf("|%p|\n", 0);
 	TEST("|%15p|", ptr, 3);
 	TEST("|%15p|", null_ptr, 4);
 	TEST("|%-15p|", ptr, 5);
