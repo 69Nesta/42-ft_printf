@@ -44,10 +44,10 @@ HEADERS_BONNUS = ft_printf_bonus.h
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)
+$(NAME): clean_out $(OBJ_BONUS)
+	ar rcs $(NAME) $(OBJ_BONUS)
 
-bonus: $(OBJ_BONUS)
+bonus: clean_out $(OBJ_BONUS)
 	ar rcs $(NAME) $(OBJ_BONUS)
 
 $(OBJ_DIR)/%.o: %.c $(HEADERS)
@@ -78,7 +78,7 @@ test: clean_out $(NAME) main.c
 	@./$(OBJ_DIR)/test.out
 
 test_bonus: clean_out bonus main_bonus.c
-	$(CC) $(CFLAGS) main_bonus.c $(NAME) -o $(OBJ_DIR)/test_bonus.out
+	$(CC) main_bonus.c $(NAME) -o $(OBJ_DIR)/test_bonus.out
 	@echo
 	@./$(OBJ_DIR)/test_bonus.out
 

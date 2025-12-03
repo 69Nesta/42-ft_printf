@@ -60,7 +60,7 @@ static int ft_right_align_i(const t_args *arg, int n, int nlen)
 							+ ' ' * (n >= 0 && arg->space_sign)));
 	while ((ft_max(nlen, arg->precision + (n < 0))) + i < arg->width)
 	{
-		ft_swrite(&printed, ft_putchar(' ' * (!arg->zero_pad || arg->precision) + '0' * (arg->zero_pad && !arg->precision)));
+		ft_swrite(&printed, ft_putchar(' ' * (!arg->zero_pad || arg->has_precision) + '0' * (arg->zero_pad && !arg->precision)));
 		i++;
 	}
 	return (printed);
@@ -77,7 +77,7 @@ static int ft_middle_align_i(const t_args *arg, int n, int nlen)
 		ft_swrite(&printed, ft_putchar('+' * (n >= 0 && arg->show_sign)
 							+ '-' * (n < 0)
 							+ ' ' * (n >= 0 && arg->space_sign)));
-	if (!(arg->zero_pad || arg->precision > (nlen - (n < 0))))
+	if (!(arg->zero_pad || arg->has_precision > (nlen - (n < 0))))
 		return (printed);
 	while (nlen + i - (n < 0) < arg->precision)
 	{

@@ -12,6 +12,7 @@
 
 #include "ft_printf_bonus.h"
 #include <stdio.h>
+// #include <limits.h>
 
 #define TEST(FORMAT, VALUE, ID)           \
 	printf("--------%3d --------\n", ID); \
@@ -27,16 +28,18 @@ void	test_type_i(void);
 void	test_type_u(void);
 void	test_type_x(void);
 void	test_type_xx(void);
+// void	test_tester_1(void);
 
 int main(void)
 {
 	// test_type_c();
 	// test_type_s();
-	test_type_p();
+	// test_type_p();
 	// test_type_i();
 	// test_type_u();
 	// test_type_x();
 	// test_type_xx();
+	// test_tester_1();
 }
 
 void test_type_c(void)
@@ -236,3 +239,33 @@ void test_type_xx(void)
     TEST("|%0#10X|", 42, 25);
 }
 
+// void	test_tester_1(void)
+// {
+// 	TEST("%01d|", 0, 1);
+// 	TEST("%012d|", LONG_MIN, 2);
+// 	TEST("%09d|", INT_MAX, 3);
+// 	TEST("%010d|", INT_MIN, 4); 
+// 	TEST("%011d|", LONG_MAX, 5)
+// 	TEST("%012d|", LONG_MIN, 6)
+// 	TEST("%013d|", ULONG_MAX, 7)
+// 	TEST("%014d|", 0, 8)
+// 	TEST("%015d|", -42, 9);
+
+// 	TEST("%01i|", 0, 4);
+// 	TEST("%013i|", UINT_MAX, 5);
+// 	TEST("%01u|", 0, 6);
+// 	TEST("%02u|", -1, 7);
+// 	TEST("%013u|", UINT_MAX, 8);
+// 	TEST("%01x|", 0, 9);
+// 	TEST("%02x|", -1, 10);
+// 	TEST("%013x|", UINT_MAX, 11);
+// 	TEST("%01X|", 0, 12);
+// 	TEST("%02X|", -1, 13);
+// 	TEST("%013X|", UINT_MAX, 13);
+
+// 	TEST("%.s|", "-", 14);
+// 	// TEST(" %01d ", 0, 13);
+// 	// TEST(" %01d ", 0, 13);
+// 	// TEST(" %01d ", 0, 13);
+// 	// TEST(" %01d ", 0, 13);
+// }

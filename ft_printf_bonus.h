@@ -38,6 +38,7 @@ typedef struct s_args
 	int		length;
 	int		width;
 	int		precision;
+	t_bool	has_precision;
 	// flags
 	t_bool	left_align;
 	t_bool	zero_pad;

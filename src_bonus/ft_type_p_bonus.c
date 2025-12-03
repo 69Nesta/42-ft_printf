@@ -70,7 +70,7 @@ static int ft_right_align_p(const t_args *arg, int nlen)
 		ft_swrite(&printed, ft_putstr("0x"));
 	while ((ft_max(nlen, arg->precision)) + i < arg->width)
 	{
-		ft_swrite(&printed, ft_putchar(' ' * (!arg->zero_pad || arg->precision) + '0' * (arg->zero_pad && !arg->precision)));
+		ft_swrite(&printed, ft_putchar(' ' * (!arg->zero_pad || arg->has_precision) + '0' * (arg->zero_pad && !arg->has_precision)));
 		i++;
 	}
 	return (printed);

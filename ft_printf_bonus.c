@@ -81,9 +81,9 @@ static int	ft_type_selector(t_args *arg, va_list *ap)
 void	print_args(t_args args)
 {
 	printf("\n----------------------\nType: %c\nLenght: %d\nWidth: %d\n"
-		"Precision: %d\nLeft_align: %d\nzero_pad: %d\nshow_sign: %d\n"
+		"Precision: %d\nhasPrecision: %d\nLeft_align: %d\nzero_pad: %d\nshow_sign: %d\n"
 		"space_sign: %d\nalternate_form: %d\n-------- %d --------\n",
-		args.type, args.length, args.width, args.precision, args.left_align,
+		args.type, args.length, args.width, args.precision, args.has_precision, args.left_align,
 		args.zero_pad, args.show_sign, args.space_sign, args.alternate_form,
 		args.arg_len);
 }

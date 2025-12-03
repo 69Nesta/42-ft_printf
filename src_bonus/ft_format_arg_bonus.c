@@ -29,6 +29,8 @@ t_args	ft_format_arg(const char *token)
 	// }
 	while (token[i] && (ft_ischarset(token[i], "-0+. #") || ft_is_num(token[i])))
 	{
+		if (token[i] == '.')
+			arg.has_precision = 1;
 		ft_fill_arg(token, &i, &arg);
 		i++;
 	}
@@ -49,6 +51,7 @@ static void	ft_init_arg(t_args *args)
 	args->show_sign = 0;
 	args->space_sign = 0;
 	args->alternate_form = 0;
+	args->has_precision = 0;
 }
 
 static void	ft_fill_arg(const char *token, int *i, t_args *arg)

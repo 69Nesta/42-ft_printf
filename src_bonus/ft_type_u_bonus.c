@@ -24,6 +24,7 @@ int	ft_type_u(unsigned int n, const t_args *arg)
 	len = ft_putnbr_len(n, arg);
 	if (arg->space_sign || arg->show_sign)
 		len--;
+	// __builtin_printf("%d\n", len);
 	ft_swrite(&count, ft_right_align_u(arg, len));
 	// count += ft_right_align_u(arg, len);
 	ft_swrite(&count, ft_middle_align_u(arg, len));
@@ -52,7 +53,7 @@ static int ft_right_align_u(const t_args *arg, int nlen)
 		return (printed);
 	while ((ft_max(nlen, arg->precision)) + i < arg->width)
 	{
-		ft_swrite(&printed, ft_putchar(' ' * (!arg->zero_pad || arg->precision) + '0' * (arg->zero_pad && !arg->precision)));
+		ft_swrite(&printed, ft_putchar(' ' * (!arg->zero_pad || arg->has_precision) + '0' * (arg->zero_pad && !arg->has_precision)));
 		i++;
 	}
 	return (printed);

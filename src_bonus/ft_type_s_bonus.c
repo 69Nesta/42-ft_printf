@@ -18,15 +18,15 @@ int	ft_type_s(const char *string, const t_args *arg)
 	int len;
 	
 	count = 0;
-	if (!string && arg->precision)
+	if (!string && arg->has_precision)
 		len = 6;
 	else if (!string)
 		len = 6;
 	else if (string)
 		len = ft_strlen(string);
-	if (string && len > arg->precision && arg->precision)
+	if (string && len > arg->precision && arg->has_precision)
 		len = arg->precision;
-	else if (!string && len > arg->precision && arg->precision)
+	else if (!string && len > arg->precision && arg->has_precision)
 		len = 0;
 	ft_swrite(&count, ft_right_align(arg, ' ', len, 1));
 	// count += ft_right_align(arg, ' ', len, 1);

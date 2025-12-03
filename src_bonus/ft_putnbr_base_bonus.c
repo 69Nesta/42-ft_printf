@@ -29,6 +29,8 @@ int	ft_putnbr_base_len(unsigned long n, int base_len)
 	int	count;
 
 	count = 0;
+	if (n == 0)
+		return (1);
 	while (n > 0)
 	{
 		n /= base_len;

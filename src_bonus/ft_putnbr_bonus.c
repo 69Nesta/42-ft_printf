@@ -31,6 +31,8 @@ int	ft_putnbr_len(unsigned int n, const t_args *arg)
 	count = 0;
 	if (arg->space_sign || arg->show_sign)
 		count++;
+	if (n == 0)
+		return (count + 1);
 	while (n > 0)
 	{
 		n /= 10;
