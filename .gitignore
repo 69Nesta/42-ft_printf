@@ -7,3 +7,4 @@ tests
 .vscode
 .tmp
 *.out
+main_bonus.c
