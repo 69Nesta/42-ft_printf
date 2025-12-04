@@ -43,13 +43,13 @@ HEADERS_BONNUS = ft_printf_bonus.h
 
 all: $(NAME)
 
-$(NAME): clean_out $(OBJ_BONUS)
-	ar rcs $(NAME) $(OBJ_BONUS)
+$(NAME): clean_out $(OBJ)
+	ar rcs $(NAME) $(OBJ)
 
 bonus: clean_out $(OBJ_BONUS)
 	ar rcs $(NAME) $(OBJ_BONUS)
 
-$(OBJ_DIR)/%.o: %.c $(HEADERS)
+$(OBJ_DIR)/%.o: %.c $(HEADERS) $(HEADERS_BONNUS)
 	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) -c $< -o $@
 
