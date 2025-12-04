@@ -6,25 +6,42 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 09:16:05 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/18 08:28:45 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/12/04 14:02:02 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_type	ft_type_p(unsigned long pointer)
+int	ft_type_p(unsigned long pointer, const t_args *arg)
 {
-	t_type	result;
+	int	count;
+	int	len;
 
-	result = ft_new_t_result(1, 0);
+	count = 0;
 	if (!pointer)
-		return (ft_type_s("(nil)"));
-	result.printed += write(1, &"0x", 2);
-	result.printed += ft_putnbr_base(pointer, "0123456789abcdef", 16);
-	return (result);
+		len = 5;
+	else
+		len = ft_putnbr_base_len(pointer, 16) + 2;
+	if (pointer && arg->show_sign)
+		len++;
+	ft_swrite(&count, ft_right_align(arg, ' ', len, pointer == 0));
+	if (!pointer)
+		ft_swrite(&count, ft_putstr("(nil)"));
+	else
+	{
+		if (arg->show_sign)
+			ft_swrite(&count, ft_putchar('+'));
+		else if (arg->space_sign)
+			ft_swrite(&count, ft_putchar(' '));
+		ft_swrite(&count, write(1, &"0x", 2));
+		ft_swrite(&count, ft_middle_zero(arg, '0', len));
+		ft_swrite(&count, ft_putnbr_base(pointer, "0123456789abcdef", 16));
+	}
+	ft_swrite(&count, ft_left_align(arg, ' ', len));
+	return (count);
 }
 
-int	ft_istype_p(const char *type)
+int	ft_istype_p(const t_args *arg)
 {
-	return (type[0] == 'p');
+	return (arg->type == 'p');
 }

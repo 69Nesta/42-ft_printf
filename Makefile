@@ -1,7 +1,12 @@
 NAME = libftprintf.a
 
 SRC = ft_printf.c \
+		src/ft_alignment.c \
+		src/ft_atoi.c \
 		src/ft_utils.c \
+		src/ft_max.c \
+		src/ft_swrite.c \
+		src/ft_format_arg.c \
 		src/ft_putnbr_base.c \
 		src/ft_putnbr.c \
 		src/ft_type_c.c \

@@ -1,39 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*   ft_swrite.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/17 09:31:12 by rpetit            #+#    #+#             */
+/*   Created: 2025/12/02 19:19:40 by rpetit            #+#    #+#             */
 /*   Updated: 2025/12/04 14:02:02 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr_base(unsigned long n, const char *base, int base_len)
+void	ft_swrite(int *count, int write_value)
 {
-	int	count;
-
-	count = 0;
-	if (n / base_len > 0)
-		count = ft_putnbr_base(n / base_len, base, base_len);
-	ft_swrite(&count, write(1, &(base[n % base_len]), 1));
-	return (count);
-}
-
-int	ft_putnbr_base_len(unsigned long n, int base_len)
-{
-	int	count;
-
-	count = 0;
-	if (n == 0)
-		return (1);
-	while (n > 0)
-	{
-		n /= base_len;
-		count++;
-	}
-	return (count);
+	if (write_value < 0)
+		*count = -1;
+	if (*count >= 0)
+		*count += write_value;
 }

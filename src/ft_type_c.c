@@ -6,18 +6,23 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 09:06:29 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/17 15:01:51 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/12/04 14:02:02 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_type	ft_type_c(char c)
+int	ft_type_c(char c, const t_args *arg)
 {
-	return (ft_new_t_result(1, write(1, &c, 1)));
+	int	count;
+
+	count = ft_right_align(arg, ' ', 1, 1);
+	ft_swrite(&count, write(1, &c, 1));
+	ft_swrite(&count, ft_left_align(arg, ' ', count));
+	return (count);
 }
 
-int	ft_istype_c(const char *type)
+int	ft_istype_c(const t_args *arg)
 {
-	return (type[0] == 'c');
+	return (arg->type == 'c');
 }

@@ -6,25 +6,38 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 09:10:38 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/17 15:08:25 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/12/04 14:02:02 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_type	ft_type_s(const char *string)
+int	ft_type_s(const char *string, const t_args *arg)
 {
-	t_type	result;
+	int	count;
+	int	len;
 
-	result = ft_new_t_result(1, 0);
-	if (!string)
-		result.printed = write(1, &"(null)", 6);
-	else
-		result.printed = write(1, string, ft_strlen(string));
-	return (result);
+	count = 0;
+	if (!string && arg->has_precision)
+		len = 6;
+	else if (!string)
+		len = 6;
+	else if (string)
+		len = ft_strlen(string);
+	if (string && len > arg->precision && arg->has_precision)
+		len = arg->precision;
+	else if (!string && len > arg->precision && arg->has_precision)
+		len = 0;
+	ft_swrite(&count, ft_right_align(arg, ' ', len, 1));
+	if (!string && len)
+		ft_swrite(&count, write(1, &"(null)", len));
+	else if (string)
+		ft_swrite(&count, write(1, string, len));
+	ft_swrite(&count, ft_left_align(arg, ' ', len));
+	return (count);
 }
 
-int	ft_istype_s(const char *type)
+int	ft_istype_s(const t_args *arg)
 {
-	return (type[0] == 's');
+	return (arg->type == 's');
 }

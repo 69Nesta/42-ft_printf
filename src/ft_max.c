@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_type_mod.c                                      :+:      :+:    :+:   */
+/*   ft_max_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/17 12:24:26 by rpetit            #+#    #+#             */
-/*   Updated: 2025/12/04 14:02:02 by rpetit           ###   ########.fr       */
+/*   Created: 2025/12/02 19:19:01 by rpetit            #+#    #+#             */
+/*   Updated: 2025/12/02 19:19:07 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-int	ft_type_mod(const t_args *arg)
+int	ft_max(int a, int b)
 {
-	(void)arg;
-	return (ft_putchar('%'));
-}
-
-int	ft_istype_mod(const t_args *arg)
-{
-	return (arg->type == '%');
+	if (a > b)
+		return (a);
+	return (b);
 }

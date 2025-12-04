@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 09:53:31 by rpetit            #+#    #+#             */
-/*   Updated: 2025/11/18 08:29:21 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/12/04 14:02:02 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,23 @@ int	ft_putnbr(unsigned int n)
 	count = 0;
 	if (n / 10 > 0)
 		count = ft_putnbr(n / 10);
-	return (count + ft_type_c(n % 10 + '0').printed);
+	ft_swrite(&count, ft_putchar(n % 10 + '0'));
+	return (count);
+}
+
+int	ft_putnbr_len(unsigned int n, const t_args *arg)
+{
+	int	count;
+
+	count = 0;
+	if (arg->space_sign || arg->show_sign)
+		count++;
+	if (n == 0)
+		return (count + 1);
+	while (n > 0)
+	{
+		n /= 10;
+		count++;
+	}
+	return (count);
 }
