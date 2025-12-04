@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 09:06:29 by rpetit            #+#    #+#             */
-/*   Updated: 2025/12/02 19:33:32 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/12/04 13:06:46 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 
 int	ft_type_c(char c, const t_args *arg)
 {
-	int count;
-	
+	int	count;
+
 	count = ft_right_align(arg, ' ', 1, 1);
 	ft_swrite(&count, write(1, &c, 1));
-	// count += write(1, &c, 1);
 	ft_swrite(&count, ft_left_align(arg, ' ', count));
-	// count += ft_left_align(arg, ' ', count);
 	return (count);
 }
 

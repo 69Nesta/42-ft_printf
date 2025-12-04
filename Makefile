@@ -32,8 +32,7 @@ SRC_BONNUS = ft_printf_bonus.c \
 				src_bonus/ft_type_mod_bonus.c
 
 CC = cc
-# CFLAGS = -Wall -Wextra -Werror -I. -g3
-CFLAGS = -I. -g3
+CFLAGS = -Wall -Wextra -Werror -I.
 
 OBJ_DIR = .obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:%.c=%.o))

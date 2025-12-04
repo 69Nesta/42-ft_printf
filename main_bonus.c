@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 10:14:46 by rpetit            #+#    #+#             */
-/*   Updated: 2025/12/04 11:40:31 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/12/04 11:58:32 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	test_tester_2(void);
 void	test_tester_3(void);
 void	test_tester_4(void);
 void	test_tester_5(void);
-
+void	test_fail(void);
 
 int main(void)
 {
@@ -48,7 +48,8 @@ int main(void)
 	// test_tester_2();
 	// test_tester_3();
 	// test_tester_4();
-	test_tester_5();
+	// test_tester_5();
+	test_fail();
 }
 
 void test_type_c(void)
@@ -378,4 +379,10 @@ void	test_tester_5(void)
 	// printf("\n--------------------\n");
 	// TEST("%197c%12p%013.i%--147.185x%-1c" ,7,(void*)18229185041105221837lu,-1488496170,703835510u,120, 1);
 	TEST("%013.i|", -1488496170, 1);
+}
+
+void	test_fail(void)
+{
+	// fail on c
+	ft_printf("%d %c %i\n", 1, '2', 3);
 }

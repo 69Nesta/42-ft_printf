@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 12:35:27 by rpetit            #+#    #+#             */
-/*   Updated: 2025/12/02 18:58:56 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/12/04 13:05:36 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,8 @@ t_args	ft_format_arg(const char *token)
 
 	i = 0;
 	ft_init_arg(&arg);
-	// if (token[i] == '')
-	// {
-	// 	arg.alternate_form = 1;
-	// 	i++;
-	// }
-	while (token[i] && (ft_ischarset(token[i], "-0+. #") || ft_is_num(token[i])))
+	while (token[i] && (ft_ischarset(token[i], "-0+. #")
+			|| ft_is_num(token[i])))
 	{
 		if (token[i] == '.')
 			arg.has_precision = 1;
@@ -81,26 +77,3 @@ static void	ft_fill_arg(const char *token, int *i, t_args *arg)
 		*i += atol.len - (atol.len > 0);
 	}
 }
-
-/*
-	if (token[i] == '-')
-		arg.left_align = 1;
-	else if (token[i] == '0')
-		arg.zero_pad = 1;
-	else if (token[i] == '+')
-		arg.show_sign = 1;
-	else if (token[i] == '.' && ft_is_num(token[i + 1]))
-	{
-		atol = ft_atol(token + i + 1);
-		arg.precision = atol.value;
-		i += atol.len - (atol.len > 0);
-	}
-	else if (token[i] == ' ')
-		arg.space_sign = 1;
-	else if (ft_is_num(token[i]) && token[i] != '0')
-	{
-		atol = ft_atol(token + i);
-		arg.width = atol.value;
-		i += atol.len - (atol.len > 0);
-	}
-*/

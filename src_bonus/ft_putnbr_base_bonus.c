@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 09:31:12 by rpetit            #+#    #+#             */
-/*   Updated: 2025/12/02 19:31:46 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/12/04 13:05:45 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	ft_putnbr_base(unsigned long n, const char *base, int base_len)
 	if (n / base_len > 0)
 		count = ft_putnbr_base(n / base_len, base, base_len);
 	ft_swrite(&count, write(1, &(base[n % base_len]), 1));
-	// count += write(1, &(base[n % base_len]), 1);
 	return (count);
 }
 

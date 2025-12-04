@@ -6,7 +6,7 @@
 /*   By: rpetit <rpetit@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 09:53:31 by rpetit            #+#    #+#             */
-/*   Updated: 2025/12/02 19:32:25 by rpetit           ###   ########.fr       */
+/*   Updated: 2025/12/04 13:06:05 by rpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	ft_putnbr(unsigned int n)
 		count = ft_putnbr(n / 10);
 	ft_swrite(&count, ft_putchar(n % 10 + '0'));
 	return (count);
-	// return (count + ft_putchar(n % 10 + '0'));
 }
 
 int	ft_putnbr_len(unsigned int n, const t_args *arg)
@@ -40,4 +39,3 @@ int	ft_putnbr_len(unsigned int n, const t_args *arg)
 	}
 	return (count);
 }
-
